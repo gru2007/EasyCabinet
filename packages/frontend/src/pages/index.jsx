@@ -19,7 +19,7 @@ export default function Index() {
       link: "https://mc-launcher.r-artemev.ru/api/v1/file/linux-x64-Gml.Launcher",
     },
     {
-      title: "MacOS (скоро, просите у @artemevkhv)",
+      title: "MacOS (скоро)",
       icon: <FaBrandsApple class="w-24 h-24 p-4" />,
       link: "#",
     },
