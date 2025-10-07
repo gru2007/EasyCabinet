@@ -19,7 +19,7 @@ export default function Index() {
       link: "https://mc-launcher.r-artemev.ru/api/v1/file/linux-x64-Gml.Launcher",
     },
     {
-      title: "MacOS (Universal)",
+      title: "macOS (Universal)",
       icon: <FaBrandsApple class="w-24 h-24 p-4" />,
       link: "https://github.com/FETSU-Council/Gml.Launcher/releases/download/1.0.1.0/GupsShield.zip",
     },
@@ -33,14 +33,16 @@ export default function Index() {
       <div class="mt-4 flex flex-wrap gap-4 items-center justify-center text-center">
         <For each={links}>{({ link, title, icon }) => (
           <a
-            class="bg-neutral-800 hover:bg-neutral-700 rounded-md px-4 py-2 flex flex-col items-center justify-center text-center w-40"
+            class="flex flex-col items-center justify-center text-center bg-neutral-800 hover:bg-neutral-700 rounded-lg w-40 h-40 p-4 transition-all duration-150 hover:scale-105"
             href={link}
             download
           >
-          {icon}
-          <span class="mt-2">{title}</span>
-        </a>
-      )}</For>
+            <div class="flex items-center justify-center h-20">
+              {icon}
+            </div>
+            <span class="mt-2 text-sm">{title}</span>
+          </a>
+        )}</For>
       </div>
     </div>
   );
