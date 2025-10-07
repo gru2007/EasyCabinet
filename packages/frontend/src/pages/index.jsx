@@ -19,9 +19,9 @@ export default function Index() {
       link: "https://mc-launcher.r-artemev.ru/api/v1/file/linux-x64-Gml.Launcher",
     },
     {
-      title: "MacOS (скоро)",
+      title: "MacOS (Intel)",
       icon: <FaBrandsApple class="w-24 h-24 p-4" />,
-      link: "#",
+      link: "https://mc-launcher.r-artemev.ru/api/v1/file/osx-x64-Gml.Launcher",
     },
   ];
 
