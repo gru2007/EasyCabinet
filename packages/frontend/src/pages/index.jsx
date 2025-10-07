@@ -21,7 +21,7 @@ export default function Index() {
     {
       title: "macOS (Universal)",
       icon: <FaBrandsApple class="w-24 h-24 p-4" />,
-      link: "https://github.com/FETSU-Council/Gml.Launcher/releases/download/1.0.1.0/GupsShield.zip",
+      link: "https://github.com/FETSU-Council/Gml.Launcher/releases/download/latest/GupsShield.zip",
     },
   ];
 
