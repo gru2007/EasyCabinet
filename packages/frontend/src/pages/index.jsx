@@ -33,15 +33,14 @@ export default function Index() {
       <div class="mt-4 flex flex-wrap gap-4 items-center justify-center text-center">
         <For each={links}>{({ link, title, icon }) => (
           <a
-            
-            class="bg-neutral-800 hover:bg-neutral-700 rounded-md px-4 py-2"
+            class="bg-neutral-800 hover:bg-neutral-700 rounded-md px-4 py-2 flex flex-col items-center justify-center text-center w-40"
             href={link}
             download
           >
-            {icon}
-            {title}
-          </a>
-        )}</For>
+          {icon}
+          <span class="mt-2">{title}</span>
+        </a>
+      )}</For>
       </div>
     </div>
   );
