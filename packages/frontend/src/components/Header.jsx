@@ -19,7 +19,8 @@ export function Header() {
       </a>
       {isAuthed() ? (
         <nav class="flex items-center gap-4 p-4">
-	      <a href="http://minecraft.r-artemev.ru:8100">Карта</a>
+          <a href="/rules">Правила</a>
+          <a href="http://minecraft.r-artemev.ru:8100">Карта</a>
           <a href="/profile">Профиль</a>
           <a href="#" onClick={doLogout}>
             Выход
@@ -27,7 +28,8 @@ export function Header() {
         </nav>
       ) : (
         <nav class="flex items-center gap-4 p-4">
-	      <a href="http://minecraft.r-artemev.ru:8100">Карта</a>
+          <a href="/rules">Правила</a>
+          <a href="http://minecraft.r-artemev.ru:8100">Карта</a>
           <a href="/login">Вход</a>
           <a href="/register">Регистрация</a>
         </nav>
