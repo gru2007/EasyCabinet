@@ -35,53 +35,27 @@ export default function ChangePassword() {
   };
 
   return (
-    <section class="mx-auto flex w-full max-w-3xl flex-col items-center justify-center">
-      <div class="glass-panel w-full space-y-6 p-8 shadow-xl md:p-10">
-        <header class="space-y-2 text-center">
-          <h1 class="text-3xl font-semibold">Придумайте новый пароль</h1>
-          <p class="text-sm text-neutral-300">
-            Старайтесь использовать уникальную комбинацию символов. После
-            сохранения вы сможете войти с новым паролем.
-          </p>
-        </header>
-        <form class="space-y-4" onSubmit={submit}>
-          <div class="space-y-1">
-            <label class="text-sm font-medium text-neutral-200" for="new-password">
-              Новый пароль
-            </label>
-            <input
-              id="new-password"
-              type="password"
-              name="password"
-              autocomplete="new-password"
-              placeholder="Введите новый пароль"
-              class="form-input"
-              required
-            />
-          </div>
-          <div class="space-y-1">
-            <label class="text-sm font-medium text-neutral-200" for="repeat-password">
-              Повторите пароль
-            </label>
-            <input
-              id="repeat-password"
-              type="password"
-              name="password2"
-              autocomplete="new-password"
-              placeholder="Подтвердите новый пароль"
-              class="form-input"
-              required
-            />
-          </div>
-          <button type="submit" class="primary-button w-full">
-            Сохранить пароль
+    <div class="flex items-center justify-center h-full">
+      <div class="bg-neutral-800 p-8 rounded-lg max-[350px]:w-full w-[350px]">
+        <h1 class="text-3xl mb-4 text-center">Смена пароля</h1>
+        <form class="flex flex-col gap-4" onSubmit={submit}>
+          <input
+            type="password"
+            name="password"
+            placeholder="Введите новый пароль"
+            class="border border-neutral-700 rounded-lg p-2 bg-neutral-800 text-white"
+          />
+          <input
+            type="password"
+            name="password2"
+            placeholder="Повторите пароль"
+            class="border border-neutral-700 rounded-lg p-2 bg-neutral-800 text-white"
+          />
+          <button class="bg-neutral-700 hover:bg-neutral-600 text-white rounded-lg p-2">
+            Сохранить
           </button>
         </form>
-        <p class="text-center text-sm text-neutral-300">
-          Отмена вернет вас к странице входа. Для повторного запроса откройте
-          письмо со ссылкой.
-        </p>
       </div>
-    </section>
+    </div>
   );
 }

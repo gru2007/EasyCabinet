@@ -29,83 +29,45 @@ export default function Register() {
   };
 
   return (
-    <section class="mx-auto flex w-full max-w-3xl flex-col items-center justify-center">
-      <div class="glass-panel w-full space-y-6 p-8 shadow-xl md:p-10">
-        <header class="space-y-2 text-center">
-          <h1 class="text-3xl font-semibold">Создание аккаунта</h1>
-          <p class="text-sm text-neutral-300">
-            Заполните форму, чтобы присоединиться к сообществу GupsShield.
-            После регистрации вы сможете войти в лаунчер и загрузить свой скин.
-          </p>
-        </header>
-        <form class="grid gap-4" onSubmit={submit}>
-          <div class="space-y-1">
-            <label class="text-sm font-medium text-neutral-200" for="register-login">
-              Логин
-            </label>
-            <input
-              id="register-login"
-              type="text"
-              name="login"
-              autocomplete="username"
-              placeholder="Придумайте никнейм"
-              class="form-input"
-              required
-            />
-          </div>
-          <div class="space-y-1">
-            <label class="text-sm font-medium text-neutral-200" for="register-email">
-              Электронная почта
-            </label>
-            <input
-              id="register-email"
-              type="email"
-              name="email"
-              autocomplete="email"
-              placeholder="example@mail.com"
-              class="form-input"
-              required
-            />
-          </div>
-          <div class="space-y-1">
-            <label class="text-sm font-medium text-neutral-200" for="register-password">
-              Пароль
-            </label>
-            <input
-              id="register-password"
-              type="password"
-              name="password"
-              autocomplete="new-password"
-              placeholder="Придумайте надежный пароль"
-              class="form-input"
-              required
-            />
-          </div>
-          <div class="space-y-1">
-            <label class="text-sm font-medium text-neutral-200" for="register-password2">
-              Повторите пароль
-            </label>
-            <input
-              id="register-password2"
-              type="password"
-              name="password2"
-              autocomplete="new-password"
-              placeholder="Введите пароль повторно"
-              class="form-input"
-              required
-            />
-          </div>
-          <button type="submit" class="primary-button w-full">
-            Создать аккаунт
+    <div class="flex items-center justify-center h-full">
+      <div class="bg-neutral-800 p-8 rounded-lg max-[350px]:w-full w-[350px]">
+        <h1 class="text-3xl mb-4 text-center">Регистрация</h1>
+        <form class="flex flex-col gap-4" onSubmit={submit}>
+          <input
+            type="text"
+            name="login"
+            placeholder="Логин"
+            class="border border-neutral-700 rounded-lg p-2 bg-neutral-800 text-white"
+          />
+          <input
+            type="email"
+            name="email"
+            placeholder="Почта"
+            class="border border-neutral-700 rounded-lg p-2 bg-neutral-800 text-white"
+          />
+          <input
+            type="password"
+            name="password"
+            placeholder="Пароль"
+            class="border border-neutral-700 rounded-lg p-2 bg-neutral-800 text-white"
+          />
+          <input
+            type="password"
+            name="password2"
+            placeholder="Повторите пароль"
+            class="border border-neutral-700 rounded-lg p-2 bg-neutral-800 text-white"
+          />
+          <button class="bg-neutral-700 hover:bg-neutral-600 text-white rounded-lg p-2">
+            Зарегистрироваться
           </button>
         </form>
-        <p class="text-center text-sm text-neutral-300">
-          Уже есть аккаунт?{" "}
-          <a class="text-sky-300 hover:text-sky-200" href="/login">
-            Войти
+        <div class="mt-4 text-center text-sm">
+          Уже есть аккаунт?
+          <a href="/login" class="text-blue-500 ml-1 hover:text-blue-600">
+            Войти
           </a>
-        </p>
+        </div>
       </div>
-    </section>
+    </div>
   );
 }

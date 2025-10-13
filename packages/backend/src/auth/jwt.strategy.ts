@@ -33,5 +33,5 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
   }
 }
 
-export type JwtPayload = { uuid: string; login: string; role: string };
+export type JwtPayload = { uuid: string; login: string };
 export type JwtPayloadExtra = JwtPayload & { exp: number; iat: number };
