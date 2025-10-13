@@ -19,5 +19,4 @@ model User {
   skinHash    String? @db.VarChar(255)
   capeHash    String? @db.VarChar(255)
   isAlex      Boolean?@db.TinyInt
-  role        String  @db.VarChar(32) @default("user")
 }

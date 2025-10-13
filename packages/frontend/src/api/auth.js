@@ -1,6 +1,5 @@
 import { createEffect, createSignal } from "solid-js";
 import { axios, failure, setBearerToken } from "../services";
-import { clearProfile } from "./user";
 import { useNavigate } from "@solidjs/router";
 
 const [isLoaded, setIsLoaded] = createSignal(false);
@@ -95,7 +94,6 @@ export async function logout() {
   }
   setIsAuthed(false);
   setBearerToken(null);
-  clearProfile();
 }
 
 export function authMiddleware() {
