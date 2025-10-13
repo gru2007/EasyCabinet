@@ -86,101 +86,110 @@ export default function Profile() {
   };
 
   return (
-    <div class="flex flex-col md:flex-row items-center md:items-start gap-6 mt-6 p-6 bg-neutral-800 rounded-sm">
-      <div>
-        <canvas ref={skinCanvas} class="rounded-sm bg-neutral-900/20" />
-        <div class="flex items-center justify-center">
-          <span class="text-sm font-medium text-neutral-900 dark:text-neutral-300 mr-2">
-            Плащ
-          </span>
-          <label class="relative inline-flex items-center cursor-pointer my-2">
-            <input
-              type="checkbox"
-              name="isAlex"
-              class="sr-only peer"
-              onChange={changeCapeElytra}
-            />
-            <div class="w-11 h-6 bg-neutral-200 peer-focus:outline-hidden peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-neutral-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-neutral-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-neutral-600 peer-checked:bg-blue-600" />
-            <span class="ms-3 text-sm font-medium text-neutral-900 dark:text-neutral-300">
-              Элитры
-            </span>
-          </label>
+    <section class="space-y-10">
+      <header class="space-y-3">
+        <h1 class="text-3xl font-light text-neutral-100">Профиль игрока</h1>
+        <p class="max-w-2xl text-sm text-neutral-300">
+          Управляйте внешним видом персонажа, загружайте свежий скин и плащ, а также переключайте подходящий тип модели. Все изменения вступают в силу после сохранения.
+        </p>
+      </header>
+
+      <div class="grid gap-8 lg:grid-cols-[360px_1fr] lg:items-start">
+        <div class="rounded-3xl border border-neutral-800/70 bg-neutral-900/70 p-6 shadow-[0_0_55px_-35px_rgba(56,189,248,0.7)] backdrop-blur">
+          <div class="rounded-2xl border border-neutral-800/60 bg-neutral-950/60 p-4">
+            <canvas ref={skinCanvas} class="mx-auto block h-[360px] w-full rounded-2xl bg-neutral-900/40" />
+          </div>
+
+          <div class="mt-6 space-y-4">
+            <p class="text-sm font-medium text-neutral-200">Плащ или элитры</p>
+            <label class="relative inline-flex items-center">
+              <input
+                type="checkbox"
+                name="isAlex"
+                class="peer sr-only"
+                onChange={changeCapeElytra}
+              />
+              <span class="block h-6 w-11 rounded-full bg-neutral-700 transition peer-checked:bg-gradient-to-r peer-checked:from-sky-500 peer-checked:to-violet-500" />
+              <span class="absolute start-1 top-1 h-4 w-4 rounded-full bg-white transition peer-checked:translate-x-5" />
+              <span class="ms-4 text-sm text-neutral-300">Переключить на элитры</span>
+            </label>
+            <p class="text-xs text-neutral-500">
+              Используйте переключатель, чтобы выбрать отображение плаща или элитр в игре.
+            </p>
+          </div>
         </div>
+
+        <form onSubmit={onSubmit} class="rounded-3xl border border-neutral-800/70 bg-neutral-900/70 p-8 shadow-[0_0_55px_-35px_rgba(124,58,237,0.65)] backdrop-blur">
+          <fieldset class="space-y-4">
+            <legend class="text-lg font-medium text-neutral-100">Настройка модели</legend>
+            <div class="flex flex-wrap items-center gap-4">
+              <span class="text-sm text-neutral-300">Модель Steve</span>
+              <label class="relative inline-flex items-center">
+                <input
+                  type="checkbox"
+                  name="isAlex"
+                  class="peer sr-only"
+                  onChange={changeSkinType}
+                  checked={skinType()}
+                />
+                <span class="block h-6 w-11 rounded-full bg-neutral-700 transition peer-checked:bg-gradient-to-r peer-checked:from-sky-500 peer-checked:to-violet-500" />
+                <span class="absolute start-1 top-1 h-4 w-4 rounded-full bg-white transition peer-checked:translate-x-5" />
+                <span class="ms-4 text-sm text-neutral-300">Модель Alex</span>
+              </label>
+            </div>
+            <p class="text-xs text-neutral-500">
+              Тип определяется автоматически после загрузки скина. Переключите вручную, если модель выбрана некорректно.
+            </p>
+          </fieldset>
+
+          <div class="mt-8 grid gap-4 md:grid-cols-2">
+            <div class="rounded-2xl border border-neutral-800/60 bg-neutral-950/50 p-5">
+              <h2 class="text-base font-semibold text-neutral-100">Загрузка скина</h2>
+              <p class="mt-2 text-sm text-neutral-400">Принимаются изображения в формате PNG. Разрешение 64×64 или 64×32.</p>
+              <input
+                type="file"
+                name="skin"
+                id="skin"
+                hidden
+                accept="image/png"
+                onChange={loadSkin}
+              />
+              <label
+                for="skin"
+                class="mt-4 inline-flex items-center justify-center rounded-xl border border-sky-500/50 bg-neutral-900/70 px-4 py-2 text-sm font-medium text-neutral-100 transition hover:border-sky-400 hover:text-sky-200"
+              >
+                Выбрать файл скина
+              </label>
+            </div>
+
+            <div class="rounded-2xl border border-neutral-800/60 bg-neutral-950/50 p-5">
+              <h2 class="text-base font-semibold text-neutral-100">Загрузка плаща</h2>
+              <p class="mt-2 text-sm text-neutral-400">Дополнительный элемент оформления. Поддерживается PNG.</p>
+              <input
+                type="file"
+                name="cape"
+                id="cape"
+                hidden
+                accept="image/png"
+                onChange={loadCape}
+              />
+              <label
+                for="cape"
+                class="mt-4 inline-flex items-center justify-center rounded-xl border border-violet-500/50 bg-neutral-900/70 px-4 py-2 text-sm font-medium text-neutral-100 transition hover:border-violet-400 hover:text-violet-200"
+              >
+                Выбрать файл плаща
+              </label>
+            </div>
+          </div>
+
+          <div class="mt-10 flex flex-wrap items-center gap-3">
+            <button class="inline-flex items-center justify-center rounded-xl border border-sky-500/60 bg-gradient-to-r from-sky-500 to-violet-500 px-5 py-2 text-sm font-semibold text-neutral-50 transition hover:from-sky-400 hover:to-violet-400">
+              Сохранить изменения
+            </button>
+            <span class="text-xs text-neutral-500">После сохранения перезапустите лаунчер для загрузки новых файлов.</span>
+          </div>
+        </form>
       </div>
-      <form onSubmit={onSubmit}>
-        <table class="mb-6 w-full">
-          <tbody>
-            <tr>
-              <td class="font-medium w-24">Тип скина:</td>
-              <td class="flex items-center">
-                <span class="text-sm font-medium text-neutral-900 dark:text-neutral-300 mr-2">
-                  Default
-                </span>
-                <label class="relative inline-flex items-center cursor-pointer my-2">
-                  <input
-                    type="checkbox"
-                    name="isAlex"
-                    class="sr-only peer"
-                    onChange={changeSkinType}
-                    checked={skinType()}
-                  />
-                  <div class="w-11 h-6 bg-neutral-200 peer-focus:outline-hidden peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-neutral-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-neutral-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-neutral-600 peer-checked:bg-blue-600" />
-                  <span class="ms-3 text-sm font-medium text-neutral-900 dark:text-neutral-300">
-                    Slim
-                  </span>
-                </label>
-              </td>
-            </tr>
-            <tr>
-              <td class="hidden md:table-cell" />
-              <td class="hidden md:table-cell">
-                <small class="text-neutral-500">
-                  Определяется автоматически. Переключайте, если тип скина
-                  определился с ошибкой.
-                </small>
-              </td>
-              <td class="md:hidden" colSpan={2}>
-                <small class="text-neutral-500">
-                  Определяется автоматически. Переключайте, если тип скина
-                  определился с ошибкой.
-                </small>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <input
-          type="file"
-          name="skin"
-          id="skin"
-          hidden
-          accept="image/png"
-          onChange={loadSkin}
-        />
-        <label
-          for="skin"
-          class="inline-block px-4 py-2 border border-neutral-600 rounded-lg hover:bg-neutral-700 transition-colors cursor-pointer mr-3"
-        >
-          Загрузить скин
-        </label>
-        <input
-          type="file"
-          name="cape"
-          id="cape"
-          hidden
-          accept="image/png"
-          onChange={loadCape}
-        />
-        <label
-          for="cape"
-          class="inline-block px-4 py-2 border border-neutral-600 rounded-lg hover:bg-neutral-700 transition-colors cursor-pointer mt-2 mr-3"
-        >
-          Загрузить плащ
-        </label>
-        <br />
-        <button class="px-4 py-2 mt-6 border bg-blue-600 border-blue-700 hover:bg-blue-500 hover:border-blue-600 transition-colors rounded-lg save-button mr-3">
-          Сохранить изменения
-        </button>
-      </form>
-    </div>
+    </section>
   );
 }
