@@ -1,6 +1,7 @@
 import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 
+import { AdminModule } from './admin/admin.module';
 import { AppController } from './app.controller';
 import { AssetsModule } from './assets/assets.module';
 import { AuroraModule } from './aurora/aurora.module';
@@ -17,6 +18,7 @@ import { FilesModule } from './files/files.module';
     FilesModule,
     AssetsModule,
     EmailsModule,
+    AdminModule,
   ],
   controllers: [AppController],
 })

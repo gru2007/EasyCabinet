@@ -39,7 +39,11 @@ export class AuthService {
 
   public async login(login: string, password: string) {
     const user = await this.verifyAuth(login, password);
-    return this.generateTokensPair({ uuid: user.uuid, login });
+    return this.generateTokensPair({
+      uuid: user.uuid,
+      login,
+      role: user.role,
+    });
   }
 
   public async register(data: RegisterDto) {

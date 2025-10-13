@@ -5,14 +5,18 @@ import { isAuthed, isLoaded } from "./auth";
 const [profile, setProfile] = createSignal();
 export { profile };
 
-function getProfile() {
-  axios
+export function reloadProfile() {
+  return axios
     .get("users")
     .then(({ data }) => setProfile(data))
     .catch(() => {});
 }
 
-createEffect(() => isLoaded() && isAuthed() && getProfile());
+export function clearProfile() {
+  setProfile(undefined);
+}
+
+createEffect(() => isLoaded() && isAuthed() && reloadProfile());
 
 export async function editProfile(formData) {
   try {

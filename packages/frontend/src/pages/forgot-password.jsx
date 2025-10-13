@@ -19,21 +19,41 @@ export default function ForgotPassword() {
   };
 
   return (
-    <div class="flex items-center justify-center h-full">
-      <div class="bg-neutral-800 p-8 rounded-lg max-[350px]:w-full w-[350px]">
-        <h1 class="text-3xl mb-4 text-center">Сброс пароля</h1>
-        <form class="flex flex-col gap-4" onSubmit={submit}>
-          <input
-            type="email"
-            name="email"
-            placeholder="Почта"
-            class="border border-neutral-700 rounded-lg p-2 bg-neutral-800 text-white"
-          />
-          <button class="bg-neutral-700 hover:bg-neutral-600 text-white rounded-lg p-2">
-            Сбросить пароль
+    <section class="mx-auto flex w-full max-w-3xl flex-col items-center justify-center">
+      <div class="glass-panel w-full space-y-6 p-8 shadow-xl md:p-10">
+        <header class="space-y-2 text-center">
+          <h1 class="text-3xl font-semibold">Восстановление доступа</h1>
+          <p class="text-sm text-neutral-300">
+            Укажите почту, привязанную к аккаунту. Мы отправим письмо со ссылкой
+            для сброса пароля.
+          </p>
+        </header>
+        <form class="space-y-4" onSubmit={submit}>
+          <div class="space-y-1">
+            <label class="text-sm font-medium text-neutral-200" for="reset-email">
+              Электронная почта
+            </label>
+            <input
+              id="reset-email"
+              type="email"
+              name="email"
+              autocomplete="email"
+              placeholder="example@mail.com"
+              class="form-input"
+              required
+            />
+          </div>
+          <button type="submit" class="primary-button w-full">
+            Отправить ссылку
           </button>
         </form>
+        <p class="text-center text-sm text-neutral-300">
+          Вспомнили пароль?{" "}
+          <a class="text-sky-300 hover:text-sky-200" href="/login">
+            Вернуться к входу
+          </a>
+        </p>
       </div>
-    </div>
+    </section>
   );
 }

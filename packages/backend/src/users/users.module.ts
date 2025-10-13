@@ -10,6 +10,6 @@ import { UsersService } from './users.service';
   controllers: [UsersController],
   providers: [PrismaService, UsersService],
   imports: [ConfigModule, AssetsModule],
-  exports: [UsersService],
+  exports: [UsersService, PrismaService],
 })
 export class UsersModule {}
