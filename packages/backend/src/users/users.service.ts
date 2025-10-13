@@ -1,5 +1,5 @@
 import { MemoryStorageFile } from '@blazity/nest-file-fastify';
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { Prisma, User } from '@prisma/client';
 import { AssetsService } from 'src/assets/assets.service';
 
@@ -50,14 +50,24 @@ export class UsersService {
   }
 
   public async getProfile({ uuid }: JwtPayload) {
-    return this.getSkinData(await this.findUser({ uuid }));
+    const user = await this.findUser({ uuid });
+
+    if (!user) {
+      throw new NotFoundException('Пользователь не найден');
+    }
+
+    return this.mapProfile(user);
   }
 
-  public getSkinData({ isAlex, skinHash, capeHash }: User) {
+  public mapProfile(user: User) {
     return {
-      isAlex,
-      skinUrl: this.assetsService.formatUrl('skin', skinHash),
-      capeUrl: this.assetsService.formatUrl('cape', capeHash),
+      uuid: user.uuid,
+      login: user.login,
+      email: user.email,
+      role: user.role,
+      isAlex: !!user.isAlex,
+      skinUrl: this.assetsService.formatUrl('skin', user.skinHash),
+      capeUrl: this.assetsService.formatUrl('cape', user.capeHash),
     };
   }
 
