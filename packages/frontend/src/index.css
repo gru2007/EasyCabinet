@@ -4,12 +4,14 @@ body {
   font-family: Inter, sans-serif;
   font-weight: 300;
   color: #fff;
-  background-color: #09090b;
+  background-color: #222;
   min-height: 100vh;
 }
 
 #root {
-  min-height: 100vh;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1rem;
 }
 
 a {
@@ -17,5 +19,5 @@ a {
 }
 
 a:hover {
-  @apply text-sky-400;
+  @apply text-blue-500;
 }
